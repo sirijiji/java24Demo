@@ -1,5 +1,6 @@
 package com.java24demo.feature.streamgatherer;
 
+import java.io.IO;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Gatherer;
@@ -13,7 +14,7 @@ public class StreamGathererExample {
         Gatherer<String, HashMap<String, StringBuilder>, Map<String, String>> groupByFirstLetter =
                 Gatherer.of(HashMap<String, StringBuilder>::new,
                         (map, fruit, downstream) -> {
-                            System.out.println("Adding fruit: " + fruit);
+                            IO.println("Adding fruit: " + fruit);
                             String key = fruit.substring(0, 1);
                             map.computeIfAbsent(key, k -> new StringBuilder()).append(fruit).append(", ");
                             return true;
@@ -36,7 +37,7 @@ public class StreamGathererExample {
         Map<String, String> result = fruits
                 .gather(groupByFirstLetter)
                 .findFirst().orElse(Map.of());
-        System.out.println(result);
+        IO.println(result);
 
     }
 
