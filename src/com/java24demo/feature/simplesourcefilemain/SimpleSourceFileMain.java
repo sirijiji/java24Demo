@@ -1,7 +1,9 @@
+
 /**
  * JEP 495: Simple Source Files and Instance Main Methods
  */
 
-     void main() {
-        System.out.println("Hello, JEP 495!");
+
+     void main(String[] args) {
+        IO.println("Hello, JEP 495!");
     }
